@@ -1,0 +1,14 @@
+﻿@using AdminPanel.Helpers.Forms;
+@{
+    ViewBag.Title = "Create";
+}
+
+@{
+    Html.FormAjax("formCadastroServidoresSde", Url.Action("Create", "ServidoresSde"), AdminPanel.Helpers.Forms.FormMethod.POST)
+        .AddFormItem(new InputTextWithLabel("inputNome", "name", "Nome", "Nome do Servidor SDE", true))
+        .AddFormItem(new InputTextWithLabel("inputLogin", "login", "Login", "Usuário SDE", true))
+        .AddFormItem(new InputTextWithLabel("inputSenha", "password", "Senha", "Senha SDE", true))
+        .AddFormItem(new InputTextWithLabel("inputInstancia", "instance", "Instance", "Instância", true))
+        .AddFormItem(new InputTextWithLabel("inputServer", "server", "Server", "Servidor", true))
+        .Render();
+}

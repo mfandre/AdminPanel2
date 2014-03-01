@@ -1,0 +1,18 @@
+﻿@model Entity.Models.Cliente
+
+@using AdminPanel.Helpers.Forms;
+@{
+    ViewBag.Title = "Cliente";
+}
+
+@{
+    Layout = null;
+}
+
+@{
+    Html.FormAjax("formEditCliente", Url.Action("Edit", "Cliente"), AdminPanel.Helpers.Forms.FormMethod.POST)
+        .AddFormItem(new InputTextWithLabel("inputNome", "name", "Nome", "Nome do Servidor SDE", true,Model.Name))
+        .AddFormItem(new InputTextWithLabel("inputLocalidade", "Localidade", "Localidade", "Brasil, Portugal...", true,Model.Localidade))
+        .AddFormItem(new InputHidden("inputHiddenId", "clienteid", Model.ClienteId.ToString()))
+        .Render();
+}

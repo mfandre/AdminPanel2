@@ -1,0 +1,18 @@
+﻿@model Entity.Models.Sde
+
+@using AdminPanel.Helpers.Forms;
+@{
+    ViewBag.Title = "Edit";
+}
+
+@{
+    Html.FormAjax("formEditServidoresSde", Url.Action("Edit", "ServidoresSde"), AdminPanel.Helpers.Forms.FormMethod.POST)
+        .AddFormItem(new InputTextWithLabel("inputNome", "name", "Nome", "Nome do Servidor SDE", true, Model.Name))
+        .AddFormItem(new InputTextWithLabel("inputLogin", "login", "Login", "Usuário SDE", true,Model.Login))
+        .AddFormItem(new InputTextWithLabel("inputSenha", "password", "Senha", "Senha SDE", true,Model.Password))
+        .AddFormItem(new InputTextWithLabel("inputInstancia", "instance", "Instance", "Instância", true,Model.Instance))
+        //.AddFormItem(new InputTextWithLabel("inputServer", "server", "Server", "Servidor", true,Model.Server))
+        .AddFormItem(new AutoCompleteInputWithLabel("inputServer", "server", "Server", "Servidor", Url.Action("AutoCompleteServidor", "ServidoresSde"), true))
+        .AddFormItem(new InputHidden("inputHiddenId","servidorsdeid",Model.SdeId.ToString()))
+        .Render();
+}

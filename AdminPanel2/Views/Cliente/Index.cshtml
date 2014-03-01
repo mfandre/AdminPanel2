@@ -1,0 +1,49 @@
+﻿@using AdminPanel.Helpers.Forms;
+@using AdminPanel.Helpers.Tables;
+@using AdminPanel.Helpers.Widget;
+@using AdminPanel.Helpers.Buttons;
+@using AdminPanel.Helpers.Tabs;
+
+@{
+    ViewBag.Title = "Clientes";
+    Layout = "~/Views/Shared/_EmptyPage.cshtml";
+}
+
+<h2>TSTSETETRSETSETSTE</h2>
+
+@{
+    //Html.DialogButton("Create", "Novo", Url.Action("Create", "Cliente")).Render();
+    
+    Html.CorePanelWidgets("PainelCliente")
+        .AddWidget(new Widget("WidgetTableCliente","Clientes")
+            .AddItem(
+                Html.Table("tableCliente", Url.Action("ReadAll", "Cliente"))
+                    .addAction(Html.DialogButton("CreateClienteBtn", "Novo", Url.Action("Create", "Cliente"),"Inserção de cliente"))
+                    .addAction(Html.RefreshDatatableButton("RefreshDatatableCliente", "Refresh", "tableCliente"))
+                    .AddColumn(new ActionColumnItem("ExcluirActionTableCliente", "ClienteId", "Exclusão", "Excluir", Url.Action("Delete", "Cliente", null, Request.Url.Scheme)))
+                    .AddColumn(new DialogColumnItem("EditActionTableCliente", "ClienteId", "Edição", "Editar", Url.Action("Edit", "Cliente")))
+                    .AddColumn("Name", "Nome")
+                    .AddColumn("Localidade", "Localidade")
+            )
+        )
+        .AddWidget(new Widget("WidgetTableCliente1", "Tabs")
+            .AddItem(
+                Html.TabComponent("tabCliente")
+                    .AddTab(new Tab("tabCliente1","Tab 1")
+                                .AddItem(Html.Table("tableCliente1", Url.Action("ReadAll", "Cliente"))
+                                .addAction(Html.DialogButton("CreateClienteBtn1", "Novo", Url.Action("Create", "Cliente"),"Inserção de cliente"))
+                                .addAction(Html.RefreshDatatableButton("RefreshDatatableCliente1", "Refresh", "tableCliente"))
+                                .AddColumn(new ActionColumnItem("ExcluirActionTableCliente1", "ClienteId", "Exclusão", "Excluir", Url.Action("Delete", "Cliente", null, Request.Url.Scheme)))
+                                .AddColumn(new DialogColumnItem("EditActionTableCliente1", "ClienteId", "Edição", "Editar", Url.Action("Edit", "Cliente")))
+                                .AddColumn("Name", "Nome")
+                                .AddColumn("Localidade", "Localidade")))
+                    .AddTab(new Tab("tabCliente2","Tab 2")
+                                .AddItem(Html.Table("tableCliente2", Url.Action("ReadAll", "Cliente"))
+                                .AddColumn("Name", "Nome")
+                                .AddColumn("Localidade", "Localidade")))
+            )
+        )
+        .Render();
+        
+       
+}

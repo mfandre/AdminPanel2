@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<taslDiagram dslVersion="1.0.0.0" isExpanded="true" absoluteBounds="0, 0, 11, 8.5" isCompleteView="true" name="tasl1">
+  <PersistentObjectModelMoniker Name="/" />
+  <nestedChildShapes>
+    <persistentObjectShape Id="973e7068-c78a-405d-926e-d5ab37acd193" isExpanded="true" absoluteBounds="3.875, 0.875, 1.5, 1.9079850260416662">
+      <PersistentObjectMoniker Name="//Cliente" />
+      <nestedChildShapes>
+        <elementListCompartment Id="71d654de-c46c-41b8-ad7a-be002af2a086" isExpanded="true" absoluteBounds="3.89, 1.3849999999999998, 1.4700000000000002, 1.0185953776041665" name="PropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="e77889b9-af53-49d7-b990-73fa974ef52f" isExpanded="true" absoluteBounds="3.89, 2.4135953776041665, 1.4700000000000002, 0.2693896484374998" name="MethodsCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </persistentObjectShape>
+    <persistentObjectShape Id="00287975-2345-48cd-8c75-0c6fd098911e" isExpanded="true" absoluteBounds="7, 0.875, 1.5, 2.6771907552083332">
+      <PersistentObjectMoniker Name="//Servidor" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ddd2e2bd-0b49-4a20-8f4c-5ac3fa59dbb1" isExpanded="true" absoluteBounds="7.015, 1.3849999999999998, 1.4700000000000002, 1.7878011067708333" name="PropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="102d150d-3ee0-43c0-bb9e-b2ef1ac9557d" isExpanded="true" absoluteBounds="7.015, 3.1828011067708335, 1.4700000000000002, 0.2693896484375" name="MethodsCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </persistentObjectShape>
+    <associationConnector edgePoints="[(5.375 : 1.82899251302083); (7 : 1.82899251302083)]" manuallyRouted="false" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Id="6c346599-c8df-45db-a999-0773b0356826" />
+      <relativeChildShapes />
+      <nodes>
+        <persistentObjectShapeMoniker Id="973e7068-c78a-405d-926e-d5ab37acd193" />
+        <persistentObjectShapeMoniker Id="00287975-2345-48cd-8c75-0c6fd098911e" />
+      </nodes>
+    </associationConnector>
+    <persistentObjectShape Id="86f1d5a8-8558-4ca9-808e-ff56f206560f" isExpanded="true" absoluteBounds="3.875, 3.375, 1.5, 2.6571907552083331">
+      <PersistentObjectMoniker Name="//SDE" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4ab3d2a2-42c0-4157-8e72-ff288ea2b035" isExpanded="true" absoluteBounds="3.8899999999999997, 3.885, 1.4700000000000002, 1.7878011067708333" name="PropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="ae4adbf0-9261-435c-b377-fbb76c04a5d5" isExpanded="true" absoluteBounds="3.8899999999999997, 5.6828011067708335, 1.4700000000000002, 0.2493896484375" name="MethodsCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </persistentObjectShape>
+    <associationConnector edgePoints="[(4.625 : 2.78298502604167); (4.625 : 3.375)]" manuallyRouted="false" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Id="7bcbf8fa-75ea-4e7f-9bb5-38d72cb7d67a" />
+      <relativeChildShapes />
+      <nodes>
+        <persistentObjectShapeMoniker Id="973e7068-c78a-405d-926e-d5ab37acd193" />
+        <persistentObjectShapeMoniker Id="86f1d5a8-8558-4ca9-808e-ff56f206560f" />
+      </nodes>
+    </associationConnector>
+    <persistentObjectShape Id="f5b70e21-38a3-484d-a402-f39e173124a1" isExpanded="true" absoluteBounds="0.75, 0.875, 1.5, 2.2725878906249992">
+      <PersistentObjectMoniker Name="//ArcgisServer" />
+      <nestedChildShapes>
+        <elementListCompartment Id="357ab32d-63b8-4679-a365-65a41e9be805" isExpanded="true" absoluteBounds="0.76499999999999968, 1.3849999999999998, 1.4700000000000002, 1.4031982421875" name="PropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="890bea66-fbcf-4456-afcc-b42c64c80e8a" isExpanded="true" absoluteBounds="0.76499999999999968, 2.7981982421874996, 1.4700000000000002, 0.2493896484375" name="MethodsCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </persistentObjectShape>
+    <associationConnector edgePoints="[(3.875 : 1.82899251302083); (2.25 : 1.82899251302083)]" manuallyRouted="false" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Id="d0ce1f31-290a-45f4-9653-d3e2b372c0ce" />
+      <relativeChildShapes />
+      <nodes>
+        <persistentObjectShapeMoniker Id="973e7068-c78a-405d-926e-d5ab37acd193" />
+        <persistentObjectShapeMoniker Id="f5b70e21-38a3-484d-a402-f39e173124a1" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</taslDiagram>

@@ -1,0 +1,72 @@
+﻿@using AdminPanel.Helpers.Forms;
+@using AdminPanel.Helpers.Tables;
+@using AdminPanel.Helpers.Widget;
+@using AdminPanel.Helpers.Buttons;
+
+@{
+    ViewBag.Title = "DataTables";
+    Layout = "~/Views/Shared/_EmptyPage.cshtml";
+}
+
+@{
+    @*List<string> l = new List<string>();
+    l.Add("D_SGF_PORTUCEL");
+    l.Add("SRV514");
+    l.Add("5151");
+    l.Add("D_SGF_PORTUCEL");
+    l.Add((Html.DialogButton("editServidorSde_1", "Editar", Url.Action("Edit", "ServidoresSde", new { id = "1" }))).ToString());
+    l.Add((Html.ActionButton("delServidorSde_1", "Excluir", Url.Action("DoLogin", "Login"),"Username:'fandre',Password:'dede12'")).ToString());
+    
+    List<string> l2 = new List<string>();
+    l2.Add("P_SDE");
+    l2.Add("10.0.10.50");
+    l2.Add("5151");
+    l2.Add("inf100");
+    l2.Add((Html.DialogButton("editServidorSde_2", "Editar", Url.Action("Edit", "ServidoresSde", new { id = "2" }))).ToString());
+    l2.Add((Html.ActionButton("delServidorSde_2", "", Url.Action("DoLogin", "Login"))).ToString());
+    *@
+    Html.CorePanelWidgets("WidgetPrincipal")
+        .AddWidget(new Widget("widget1", "Primeiro Widget")
+                        .AddItem(
+                            Html.Table("tableUsuario", Url.Action("ListQueryable", "DataTable"))
+                                .AddColumn(new ActionColumnItem("ExcluirActionTableUsuario", "UserId", "Exclusão", "Excluir", Url.Action("SomeAction", "DataTable", null, Request.Url.Scheme)))
+                                .AddColumn(new DialogColumnItem("EditActionTableUsuario", "UserId", "Edição", "Editar", Url.Action("Edit", "ServidoresSde")))
+                                .AddColumn("Name", "Nome")
+                                .AddColumn("Email", "E-mail")
+                                .AddColumn(new StatusColumnItem("EstReg", "Status", StatusColumnType.Success))
+                                )
+        )
+        @*.AddWidget(new Widget("widget3", "Simple Table")
+                        .AddToolbarItem(Html.DialogButton("Create", "Novo", Url.Action("Create", "ServidoresSde")))
+                        .AddItem(
+                            Html.SimpleTable("SimpleTable")
+                                .AddColumn("Nome")
+                                .AddColumn("Server")
+                                .AddColumn("Porta")
+                                .AddColumn("Login SDE")
+                                .AddColumn("Edit")
+                                .AddColumn("Delete")
+                                .AddData(l)
+                                .AddData(l2)
+                        )
+                    )*@
+        .AddWidget(new Widget("widget2", "Segundo Widget")
+                        .AddItem(
+                            Html.Table("tableUsuario2", Url.Action("ListQueryable", "DataTable"))
+                                .setScrollXInner(100)
+                                .AddColumn("Name", "Nome")
+                                .AddColumn("Email", "E-mail")
+                                .AddColumn(new StatusColumnItem("EstReg", "Status", StatusColumnType.Success))
+        //.AddColumn("Password", "Senha", Width: 310)
+        //.AddColumn("Picture", "Figura")
+        //.AddColumn("DataReg", "Data de Registro",Fixed:true,Type:ColumnType.DateTime)
+        //.AddColumn("EstReg", "Ativo")
+        //.AddColumn("Name", "Nome", Fixed: true)
+        //.AddColumn("Email", "E-mail")
+        //.AddColumn("Password", "Senha", Width: 310)
+        //.AddColumn("Picture", "Figura")
+        //.AddColumn("DataReg", "Data de Registro", Fixed: true, Type: ColumnType.DateTime)
+        //.AddColumn("EstReg", "Ativo")
+                    )
+        ).Render();
+}  

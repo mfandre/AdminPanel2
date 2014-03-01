@@ -1,0 +1,17 @@
+﻿@{
+    Layout = null;
+}
+
+@using AdminPanel.Helpers.Forms;
+@{
+    ViewBag.Title = "Cadastro de Cliente";
+}
+
+@{
+    Html.FormAjax("formCadastroCliente", Url.Action("Create", "Cliente"), AdminPanel.Helpers.Forms.FormMethod.POST)
+        .AddFormItem(new InputTextWithLabel("inputNome", "name", "Nome", "Nome do Servidor SDE", true))
+        .AddFormItem(new InputTextWithLabel("inputLocalidade", "localidade", "Localidade", "Brasil, Portugal...", true))
+        .Render();
+}
+
+<span>Teste</span>

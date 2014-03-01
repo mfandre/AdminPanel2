@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PersistentObjectModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Name="" xmlns="http://www.tangiblearchitect.com/dsltools/PersistentObjects">
+  <ArrayOfStereoType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <StereoType>
+      <StereoTypeName>PersistentObjectModel</StereoTypeName>
+      <BaseModelElementTypeFullName>tasl.Dsl.PersistentObjectModel</BaseModelElementTypeFullName>
+      <DefinedProperties />
+    </StereoType>
+    <StereoType>
+      <StereoTypeName>PersistentObject</StereoTypeName>
+      <BaseModelElementTypeFullName>tasl.Dsl.PersistentObject</BaseModelElementTypeFullName>
+      <DefinedProperties />
+    </StereoType>
+    <StereoType>
+      <StereoTypeName>PersistentRootObject</StereoTypeName>
+      <BaseModelElementTypeFullName>tasl.Dsl.PersistentRootObject</BaseModelElementTypeFullName>
+      <DefinedProperties />
+    </StereoType>
+    <StereoType>
+      <StereoTypeName>Property</StereoTypeName>
+      <BaseModelElementTypeFullName>tasl.Dsl.Property</BaseModelElementTypeFullName>
+      <DefinedProperties />
+    </StereoType>
+    <StereoType>
+      <StereoTypeName>Method</StereoTypeName>
+      <BaseModelElementTypeFullName>tasl.Dsl.Method</BaseModelElementTypeFullName>
+      <DefinedProperties />
+    </StereoType>
+    <StereoType>
+      <StereoTypeName>Containment</StereoTypeName>
+      <BaseModelElementTypeFullName>tasl.Dsl.Containment</BaseModelElementTypeFullName>
+      <DefinedProperties />
+    </StereoType>
+    <StereoType>
+      <StereoTypeName>Association</StereoTypeName>
+      <BaseModelElementTypeFullName>tasl.Dsl.Association</BaseModelElementTypeFullName>
+      <DefinedProperties />
+    </StereoType>
+    <StereoType>
+      <StereoTypeName>Generalization</StereoTypeName>
+      <BaseModelElementTypeFullName>tasl.Dsl.Generalization</BaseModelElementTypeFullName>
+      <DefinedProperties />
+    </StereoType>
+    <StereoType>
+      <StereoTypeName>Comment</StereoTypeName>
+      <BaseModelElementTypeFullName>tasl.Dsl.Comment</BaseModelElementTypeFullName>
+      <DefinedProperties />
+    </StereoType>
+  </ArrayOfStereoType>
+  <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+  <persistentObjects>
+    <PersistentObject Id="8e9a3d91-f536-474b-a18f-d767939ee9c9" Name="Cliente">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+      <Properties>
+        <Property Id="414e94d7-fd8a-4c7b-ad08-cff47fbb44fd" Name="Nome" type="String" defaultValue="" nameAndType="Nome : String" objectName="false" size="" cachedBLOB="false">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Property>
+        <Property Id="4f814d37-8674-483c-9c8d-aaed68fa1e2f" Name="Localidade" type="String" defaultValue="" nameAndType="Localidade : String" objectName="false" size="" cachedBLOB="false">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Property>
+        <Property Id="f5e6f661-4a93-4b09-b591-bc24066b5acc" Name="DataReg" type="DateTime" defaultValue="" nameAndType="DataReg : DateTime" objectName="false" size="" cachedBLOB="false">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Property>
+        <Property Id="d46bfa85-5abc-4246-b68b-658c155f2919" Name="EstReg" type="String" defaultValue="" nameAndType="EstReg : String" objectName="false" size="" cachedBLOB="false">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Property>
+      </Properties>
+      <AssociationTargets>
+        <Association Id="6c346599-c8df-45db-a999-0773b0356826" sourceMultiplicity="One" sourceRoleName="Cliente" targetMultiplicity="ZeroMany" targetRoleName="Servidors" name="Cliente_associates_Servidors" uniqueNaming="false" autoSourceRoleName="true" autoTargetRoleName="true" autoName="true">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <PersistentObjectMoniker Name="//Servidor" />
+        </Association>
+        <Association Id="7bcbf8fa-75ea-4e7f-9bb5-38d72cb7d67a" sourceMultiplicity="One" sourceRoleName="Cliente" targetMultiplicity="ZeroMany" targetRoleName="SDEs" name="Cliente_associates_SDEs" uniqueNaming="false" autoSourceRoleName="true" autoTargetRoleName="true" autoName="true">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <PersistentObjectMoniker Name="//SDE" />
+        </Association>
+        <Association Id="d0ce1f31-290a-45f4-9653-d3e2b372c0ce" sourceMultiplicity="One" sourceRoleName="Cliente" targetMultiplicity="ZeroMany" targetRoleName="ArcgisServers" name="Cliente_associates_ArcgisServers" uniqueNaming="false" autoSourceRoleName="true" autoTargetRoleName="true" autoName="true">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <PersistentObjectMoniker Name="//ArcgisServer" />
+        </Association>
+      </AssociationTargets>
+    </PersistentObject>
+    <PersistentObject Id="a4ead238-32f0-4ec8-bd4c-8befd20df97f" Name="Servidor">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+      <Properties>
+        <Property Id="df194273-b932-43c7-b780-6bc05b329c4a" Name="Name" type="String" defaultValue="" nameAndType="Name : String" objectName="false" size="" cachedBLOB="false">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Property>
+        <Property Id="44a220b8-a58f-4c18-bb0f-ce86a12362ad" Name="Ip" type="String" defaultValue="" nameAndType="Ip : String" objectName="false" size="" cachedBLOB="false">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Property>
+        <Property Id="ce1068cc-1f8f-4a50-945a-4557900234a6" Name="Url" type="String" defaultValue="" nameAndType="Url : String" objectName="false" size="" cachedBLOB="false">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Property>
+        <Property Id="fe26ee8e-ecc2-471c-bc1b-26c06e71f1e0" Name="Login" type="String" defaultValue="" nameAndType="Login : String" objectName="false" size="" cachedBLOB="false">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Property>
+        <Property Id="6bd5c560-7263-4787-824c-a30f7722ae34" Name="Pass" type="String" defaultValue="" nameAndType="Pass : String" objectName="false" size="" cachedBLOB="false">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Property>
+        <Property Id="6c5b3872-303d-46f5-9a87-455b838182cd" Name="Tipo" type="String" defaultValue="" nameAndType="Tipo : String" objectName="false" size="" cachedBLOB="false">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Property>
+        <Property Id="b47ce996-ef0c-4690-89ef-d40fe6ff6d73" Name="DataReg" type="DateTime" defaultValue="" nameAndType="DataReg : DateTime" objectName="false" size="" cachedBLOB="false">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Property>
+        <Property Id="9fed0074-ba2f-485e-b4c0-993f3eb86358" Name="EstReg" type="String" defaultValue="" nameAndType="EstReg : String" objectName="false" size="" cachedBLOB="false">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Property>
+      </Properties>
+    </PersistentObject>
+    <PersistentObject Id="4a80db76-667f-4579-81e2-4a68c67fd603" Name="SDE">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+      <Properties>
+        <Property Id="1cbdbb14-50f1-49fb-82e6-b14d3fdebfc6" Name="Name" type="String" defaultValue="" nameAndType="Name : String" objectName="false" size="" cachedBLOB="false">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Property>
+        <Property Id="4ef4bc1c-3eb8-4ee4-9525-024d4db0d4a6" Name="Login" type="String" defaultValue="" nameAndType="Login : String" objectName="false" size="" cachedBLOB="false">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Property>
+        <Property Id="d2ab50d7-8276-426e-bc2c-bb6079c8b632" Name="Pass" type="String" defaultValue="" nameAndType="Pass : String" objectName="false" size="" cachedBLOB="false">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Property>
+        <Property Id="43a946da-a1f2-489d-9b5d-6f94d41faedb" Name="Service" type="String" defaultValue="" nameAndType="Service : String" objectName="false" size="" cachedBLOB="false">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Property>
+        <Property Id="0e1feae2-f915-47c0-b807-fbb8f33900bb" Name="Instance" type="String" defaultValue="" nameAndType="Instance : String" objectName="false" size="" cachedBLOB="false">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Property>
+        <Property Id="5a7e820f-b0b3-4a19-8adc-a0e8c430dc0e" Name="ConnDirect" type="String" defaultValue="" nameAndType="ConnDirect : String" objectName="false" size="" cachedBLOB="false">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Property>
+        <Property Id="9cf92239-0f48-40f0-9273-ae7543a8b9ad" Name="Version" type="String" defaultValue="" nameAndType="Version : String" objectName="false" size="" cachedBLOB="false">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Property>
+        <Property Id="1e75c6c6-d746-4799-8849-e93569d68fde" Name="SDEVersion" type="String" defaultValue="" nameAndType="SDEVersion : String" objectName="false" size="" cachedBLOB="false">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Property>
+      </Properties>
+    </PersistentObject>
+    <PersistentObject Id="f3ccb85a-fa4a-4fa9-bb13-2e31901272cf" Name="ArcgisServer">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+      <Properties>
+        <Property Id="b8958820-8e1f-47a8-b70f-f02450f698cb" Name="Name" type="String" defaultValue="" nameAndType="Name : String" objectName="false" size="" cachedBLOB="false">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Property>
+        <Property Id="8486abf6-3860-468b-85ff-102ad781acc5" Name="Url" type="String" defaultValue="" nameAndType="Url : String" objectName="false" size="" cachedBLOB="false">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Property>
+        <Property Id="e92b4e45-5996-41f9-90a3-9ce7cbb7225b" Name="Login" type="String" defaultValue="" nameAndType="Login : String" objectName="false" size="" cachedBLOB="false">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Property>
+        <Property Id="5d038167-a2be-4a9d-97da-9e1a797def96" Name="Pass" type="String" defaultValue="" nameAndType="Pass : String" objectName="false" size="" cachedBLOB="false">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Property>
+        <Property Id="b987f90e-7927-4f2d-8af4-f48d6d0504eb" Name="DataReg" type="DateTime" defaultValue="" nameAndType="DataReg : DateTime" objectName="false" size="" cachedBLOB="false">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Property>
+        <Property Id="11501bec-b8ed-493a-a213-35d7c6942e72" Name="EstReg" type="String" defaultValue="" nameAndType="EstReg : String" objectName="false" size="" cachedBLOB="false">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Property>
+      </Properties>
+    </PersistentObject>
+  </persistentObjects>
+</PersistentObjectModel>

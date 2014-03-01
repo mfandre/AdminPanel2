@@ -1,0 +1,30 @@
+﻿@using AdminPanel.Helpers.Forms;
+@using AdminPanel.Helpers.Tables;
+@using AdminPanel.Helpers.Widget;
+@using AdminPanel.Helpers.Buttons;
+
+@{
+    ViewBag.Title = "Cadastro Menu";
+    Layout = "~/Views/Shared/_EmptyPage.cshtml";
+}
+
+@{
+    //Html.DialogButton("Create", "Novo", Url.Action("Create", "Cliente")).Render();
+    
+    Html.CorePanelWidgets("PainelMenu")
+        .AddWidget(new Widget("WidgetTableMenu","Itens do Menu")
+            .AddItem(
+                Html.Table("tableMenu", Url.Action("ReadAll", "Menu"))
+                    .addAction(Html.DialogButton("CreateClienteBtn", "Novo", Url.Action("Create", "Cliente"),"Inserção de cliente"))
+                    .addAction(Html.RefreshDatatableButton("RefreshDatatableCliente", "Refresh", "tableMenu"))
+                    .AddColumn(new ActionColumnItem("ExcluirActionTableMenu", "MenuItemId", "Exclusão", "Excluir", Url.Action("Delete", "Menu", null, Request.Url.Scheme)))
+                    .AddColumn(new DialogColumnItem("EditActionTableMenu", "MenuItemId", "Edição", "Editar", Url.Action("Edit", "Menu")))
+                    .AddColumn("Name", "Nome")
+                    .AddColumn("Url", "Url")
+                    .AddColumn("Icon", "Icon")
+                    .AddColumn("Root", "Root")
+                    .AddColumn("ParentId","Parent")
+            )
+        )
+        .Render();
+}

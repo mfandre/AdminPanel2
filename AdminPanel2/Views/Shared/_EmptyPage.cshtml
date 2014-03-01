@@ -1,0 +1,146 @@
+﻿@{ 
+    Entity.Models.User user = (Entity.Models.User)HttpContext.Current.Session["usuario"]; 
+}
+<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+		<meta charset="utf-8">
+		<!--<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">-->
+
+		<title> @ViewBag.Title </title>
+		<meta name="description" content="">
+		<meta name="author" content="">
+
+		<meta name="HandheldFriendly" content="True">
+		<meta name="MobileOptimized" content="320">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<!-- Basic Styles -->
+		<link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" media="screen" href="css/font-awesome.min.css">
+
+		<!-- SmartAdmin Styles : Please note (smartadmin-production.css) was created using LESS variables -->
+		<link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-production.css">
+		<link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-skins.css">
+
+		<!-- FAVICONS -->
+		<link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon">
+		<link rel="icon" href="img/favicon/favicon.ico" type="image/x-icon">
+
+		<!-- GOOGLE FONT -->
+		@*<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700">*@
+
+        <script>
+            window.onerror = function (m, u, l) {
+
+                $.ajax({
+                    url: '@Url.Action("Occurred", "ClientSideError")',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: JSON.stringify({ ErrorMsg: m, Url: u, Line: l, Uri: window.location.href }),
+                    contentType: 'application/json; charset=utf-8',
+                });
+
+                return true;
+            };
+        </script>
+
+	</head>
+
+    <body class="no-right-panel"> <!-- possible classes: minified, no-right-panel, fixed-ribbon, fixed-header, fixed-width-->
+        <!--================================================== -->	
+
+        @System.Web.Optimization.Scripts.Render("~/bundles/scripts")
+		<!--[if IE 7]>
+			<h1>Your browser is out of date, please update your browser by going to www.microsoft.com/download</h1>
+		<![endif]-->
+
+		<header id="header">
+			<!--<span id="logo"></span>-->
+			<div id="logo-group">
+				<span id="logo">
+					Admin do Tainha
+				</span>
+			</div>
+			
+			<div class="pull-right">
+				<div id="hide-menu" class="btn-header pull-right">
+					<span>
+						<a href="javascript:void(0);"><i class="fa fa-reorder"></i></a>
+					</span>
+				</div>
+				<div id="logout" class="btn-header transparent pull-right">
+					<span>
+						<a href="@Url.Action("Logout","Login")"><i class="fa fa-sign-out"></i></a>
+					</span>
+				</div>
+				<div id="search-mobile" class="btn-header transparent pull-right">
+					<span>
+						<a href="javascript:void(0)"><i class="fa fa-search"></i></a>
+					</span>
+				</div>
+					
+				<!--<form action="#ajax/search.html" class="header-search pull-right">
+					<input type="text" placeholder="" id="search-fld">
+					<button type="submit">
+						<i class="fa fa-search"></i>
+					</button>
+					<a href="javascript:void(0);" id="cancel-search-js"><i class="fa fa-times"></i></a>
+				</form>-->			
+				
+			</div>
+		</header>
+
+		<aside id="left-panel">
+			<div class="login-info">
+				<span>
+					<img src="@user.Picture" alt="me" class="online" />	
+					<a>@user.Name</a>
+				</span>
+			</div>
+			<nav>
+                @Html.Action("MainMenu","Menu")
+                
+			</nav>
+                
+			<span class="minifyme">
+				<i class="fa fa-arrow-circle-left hit"></i>
+			</span>			
+		</aside>
+
+
+		<div id="main" role="main">
+			<div id="ribbon">
+				
+				@*<span class="ribbon-button-alignment">
+					<span id="refresh" class="btn btn-ribbon" data-title="refresh" rel="tooltip" data-placement="bottom" data-original-title="<i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings." data-html="true"><i class="fa fa-refresh"></i></span>
+				</span>*@
+
+				<ol class="breadcrumb">
+					<li>@ViewBag.Title</li>
+				</ol>			
+			</div>
+			
+			<!-- MAIN CONTENT -->
+			<div id="content" style="background-color:#FFF;height:100%;">
+                <div class="row">
+				    @RenderBody()
+                </div>
+			</div>						
+		</div>
+		
+        
+        @*Não altere a ordem*@
+        @System.Web.Optimization.Scripts.Render("~/bundles/app")
+
+        <!-- Iniciando Widgets -->
+        <script>
+            $(document).ready(function () {
+
+                pageSetUp();
+            });
+        </script>
+
+	</body>	
+
+</html>

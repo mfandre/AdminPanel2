@@ -1,0 +1,316 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1DEAF66D-FD34-4410-BD8D-3511B2EAEFFE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AdminPanel.Context</RootNamespace>
+    <AssemblyName>AdminPanel.Context</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MainContext.cs" />
+    <Compile Include="Mapping\ArcgisServerMap.cs" />
+    <Compile Include="Mapping\ClienteMap.cs" />
+    <Compile Include="Mapping\ClientSideJavascriptErrorMap.cs" />
+    <Compile Include="Mapping\MenuItemMap.cs" />
+    <Compile Include="Mapping\SdeMap.cs" />
+    <Compile Include="Mapping\UserMap.cs" />
+    <Compile Include="Migrations\201312070140120_InitialCreate.cs" />
+    <Compile Include="Migrations\201312070140120_InitialCreate.Designer.cs">
+      <DependentUpon>201312070140120_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201312080537414_ChangeDatetime2Datetime2OnUserModel.cs" />
+    <Compile Include="Migrations\201312080537414_ChangeDatetime2Datetime2OnUserModel.Designer.cs">
+      <DependentUpon>201312080537414_ChangeDatetime2Datetime2OnUserModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201401272051183_addServidoresSde.cs" />
+    <Compile Include="Migrations\201401272051183_addServidoresSde.Designer.cs">
+      <DependentUpon>201401272051183_addServidoresSde.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201401272054069_addServidoresSde1.cs" />
+    <Compile Include="Migrations\201401272054069_addServidoresSde1.Designer.cs">
+      <DependentUpon>201401272054069_addServidoresSde1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201401272055431_addServidoresSde2.cs" />
+    <Compile Include="Migrations\201401272055431_addServidoresSde2.Designer.cs">
+      <DependentUpon>201401272055431_addServidoresSde2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402230328317_CreateTableCfgCliente.cs" />
+    <Compile Include="Migrations\201402230328317_CreateTableCfgCliente.Designer.cs">
+      <DependentUpon>201402230328317_CreateTableCfgCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402230332348_CreateTableCfgCliente2.cs" />
+    <Compile Include="Migrations\201402230332348_CreateTableCfgCliente2.Designer.cs">
+      <DependentUpon>201402230332348_CreateTableCfgCliente2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402230336228_AtualizandoReferencias.cs" />
+    <Compile Include="Migrations\201402230336228_AtualizandoReferencias.Designer.cs">
+      <DependentUpon>201402230336228_AtualizandoReferencias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402230339209_CreateTableCfgArcgisServer.cs" />
+    <Compile Include="Migrations\201402230339209_CreateTableCfgArcgisServer.Designer.cs">
+      <DependentUpon>201402230339209_CreateTableCfgArcgisServer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402230408111_UpdateFieldsToDateTime2.cs" />
+    <Compile Include="Migrations\201402230408111_UpdateFieldsToDateTime2.Designer.cs">
+      <DependentUpon>201402230408111_UpdateFieldsToDateTime2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402230454540_AdicionandoLocalidadeNaEntidadeCliente.cs" />
+    <Compile Include="Migrations\201402230454540_AdicionandoLocalidadeNaEntidadeCliente.Designer.cs">
+      <DependentUpon>201402230454540_AdicionandoLocalidadeNaEntidadeCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402230602057_AdicionandoClientSideJavascriptErrorMap.cs" />
+    <Compile Include="Migrations\201402230602057_AdicionandoClientSideJavascriptErrorMap.Designer.cs">
+      <DependentUpon>201402230602057_AdicionandoClientSideJavascriptErrorMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402230614231_AdicionandoUriEmClientSideJavascriptErrorMap.cs" />
+    <Compile Include="Migrations\201402230614231_AdicionandoUriEmClientSideJavascriptErrorMap.Designer.cs">
+      <DependentUpon>201402230614231_AdicionandoUriEmClientSideJavascriptErrorMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402250017129_AdicionandoMenuItem.cs" />
+    <Compile Include="Migrations\201402250017129_AdicionandoMenuItem.Designer.cs">
+      <DependentUpon>201402250017129_AdicionandoMenuItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402250018263_AdicionandoMenuItem2.cs" />
+    <Compile Include="Migrations\201402250018263_AdicionandoMenuItem2.Designer.cs">
+      <DependentUpon>201402250018263_AdicionandoMenuItem2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402252206153_AddListMenuItem.cs" />
+    <Compile Include="Migrations\201402252206153_AddListMenuItem.Designer.cs">
+      <DependentUpon>201402252206153_AddListMenuItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402252334212_AddListMenuItem2.cs" />
+    <Compile Include="Migrations\201402252334212_AddListMenuItem2.Designer.cs">
+      <DependentUpon>201402252334212_AddListMenuItem2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402252336260_AddListMenuItem3.cs" />
+    <Compile Include="Migrations\201402252336260_AddListMenuItem3.Designer.cs">
+      <DependentUpon>201402252336260_AddListMenuItem3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402252337285_AddListMenuItem31.cs" />
+    <Compile Include="Migrations\201402252337285_AddListMenuItem31.Designer.cs">
+      <DependentUpon>201402252337285_AddListMenuItem31.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402252338564_AddListMenuItem4.cs" />
+    <Compile Include="Migrations\201402252338564_AddListMenuItem4.Designer.cs">
+      <DependentUpon>201402252338564_AddListMenuItem4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402252341260_AddListMenuItem5.cs" />
+    <Compile Include="Migrations\201402252341260_AddListMenuItem5.Designer.cs">
+      <DependentUpon>201402252341260_AddListMenuItem5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402260010177_AddListMenuItem6.cs" />
+    <Compile Include="Migrations\201402260010177_AddListMenuItem6.Designer.cs">
+      <DependentUpon>201402260010177_AddListMenuItem6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402260027199_AddListMenuItem8.cs" />
+    <Compile Include="Migrations\201402260027199_AddListMenuItem8.Designer.cs">
+      <DependentUpon>201402260027199_AddListMenuItem8.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402260031532_AddListMenuItem9.cs" />
+    <Compile Include="Migrations\201402260031532_AddListMenuItem9.Designer.cs">
+      <DependentUpon>201402260031532_AddListMenuItem9.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402260038436_AddListMenuItem10.cs" />
+    <Compile Include="Migrations\201402260038436_AddListMenuItem10.Designer.cs">
+      <DependentUpon>201402260038436_AddListMenuItem10.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402260048552_AddListMenuItem11.cs" />
+    <Compile Include="Migrations\201402260048552_AddListMenuItem11.Designer.cs">
+      <DependentUpon>201402260048552_AddListMenuItem11.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402260054446_AddListMenuItem12.cs" />
+    <Compile Include="Migrations\201402260054446_AddListMenuItem12.Designer.cs">
+      <DependentUpon>201402260054446_AddListMenuItem12.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402260057490_AddListMenuItem13.cs" />
+    <Compile Include="Migrations\201402260057490_AddListMenuItem13.Designer.cs">
+      <DependentUpon>201402260057490_AddListMenuItem13.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402260102581_AddListMenuItem14.cs" />
+    <Compile Include="Migrations\201402260102581_AddListMenuItem14.Designer.cs">
+      <DependentUpon>201402260102581_AddListMenuItem14.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402260106461_AddListMenuItem15.cs" />
+    <Compile Include="Migrations\201402260106461_AddListMenuItem15.Designer.cs">
+      <DependentUpon>201402260106461_AddListMenuItem15.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402260109232_AddListMenuItem151.cs" />
+    <Compile Include="Migrations\201402260109232_AddListMenuItem151.Designer.cs">
+      <DependentUpon>201402260109232_AddListMenuItem151.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402260120136_AddListMenuItem16.cs" />
+    <Compile Include="Migrations\201402260120136_AddListMenuItem16.Designer.cs">
+      <DependentUpon>201402260120136_AddListMenuItem16.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402260127057_AddListMenuItem17.cs" />
+    <Compile Include="Migrations\201402260127057_AddListMenuItem17.Designer.cs">
+      <DependentUpon>201402260127057_AddListMenuItem17.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Entity\AdminPanel.Entity.csproj">
+      <Project>{38fad8b8-254a-4680-b929-400f411eb155}</Project>
+      <Name>AdminPanel.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Repository\Repository.csproj">
+      <Project>{c6f6d7a5-43f9-4220-8822-6167e62a9fdc}</Project>
+      <Name>Repository %28Repository\Repository%29</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201312070140120_InitialCreate.resx">
+      <DependentUpon>201312070140120_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312080537414_ChangeDatetime2Datetime2OnUserModel.resx">
+      <DependentUpon>201312080537414_ChangeDatetime2Datetime2OnUserModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201401272051183_addServidoresSde.resx">
+      <DependentUpon>201401272051183_addServidoresSde.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201401272054069_addServidoresSde1.resx">
+      <DependentUpon>201401272054069_addServidoresSde1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201401272055431_addServidoresSde2.resx">
+      <DependentUpon>201401272055431_addServidoresSde2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402230328317_CreateTableCfgCliente.resx">
+      <DependentUpon>201402230328317_CreateTableCfgCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402230332348_CreateTableCfgCliente2.resx">
+      <DependentUpon>201402230332348_CreateTableCfgCliente2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402230336228_AtualizandoReferencias.resx">
+      <DependentUpon>201402230336228_AtualizandoReferencias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402230339209_CreateTableCfgArcgisServer.resx">
+      <DependentUpon>201402230339209_CreateTableCfgArcgisServer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402230408111_UpdateFieldsToDateTime2.resx">
+      <DependentUpon>201402230408111_UpdateFieldsToDateTime2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402230454540_AdicionandoLocalidadeNaEntidadeCliente.resx">
+      <DependentUpon>201402230454540_AdicionandoLocalidadeNaEntidadeCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402230602057_AdicionandoClientSideJavascriptErrorMap.resx">
+      <DependentUpon>201402230602057_AdicionandoClientSideJavascriptErrorMap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402230614231_AdicionandoUriEmClientSideJavascriptErrorMap.resx">
+      <DependentUpon>201402230614231_AdicionandoUriEmClientSideJavascriptErrorMap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402250017129_AdicionandoMenuItem.resx">
+      <DependentUpon>201402250017129_AdicionandoMenuItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402250018263_AdicionandoMenuItem2.resx">
+      <DependentUpon>201402250018263_AdicionandoMenuItem2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402252206153_AddListMenuItem.resx">
+      <DependentUpon>201402252206153_AddListMenuItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402252334212_AddListMenuItem2.resx">
+      <DependentUpon>201402252334212_AddListMenuItem2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402252336260_AddListMenuItem3.resx">
+      <DependentUpon>201402252336260_AddListMenuItem3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402252337285_AddListMenuItem31.resx">
+      <DependentUpon>201402252337285_AddListMenuItem31.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402252338564_AddListMenuItem4.resx">
+      <DependentUpon>201402252338564_AddListMenuItem4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402252341260_AddListMenuItem5.resx">
+      <DependentUpon>201402252341260_AddListMenuItem5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402260010177_AddListMenuItem6.resx">
+      <DependentUpon>201402260010177_AddListMenuItem6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402260027199_AddListMenuItem8.resx">
+      <DependentUpon>201402260027199_AddListMenuItem8.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402260031532_AddListMenuItem9.resx">
+      <DependentUpon>201402260031532_AddListMenuItem9.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402260038436_AddListMenuItem10.resx">
+      <DependentUpon>201402260038436_AddListMenuItem10.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402260048552_AddListMenuItem11.resx">
+      <DependentUpon>201402260048552_AddListMenuItem11.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402260054446_AddListMenuItem12.resx">
+      <DependentUpon>201402260054446_AddListMenuItem12.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402260057490_AddListMenuItem13.resx">
+      <DependentUpon>201402260057490_AddListMenuItem13.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402260102581_AddListMenuItem14.resx">
+      <DependentUpon>201402260102581_AddListMenuItem14.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402260106461_AddListMenuItem15.resx">
+      <DependentUpon>201402260106461_AddListMenuItem15.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402260109232_AddListMenuItem151.resx">
+      <DependentUpon>201402260109232_AddListMenuItem151.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402260120136_AddListMenuItem16.resx">
+      <DependentUpon>201402260120136_AddListMenuItem16.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402260127057_AddListMenuItem17.resx">
+      <DependentUpon>201402260127057_AddListMenuItem17.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
