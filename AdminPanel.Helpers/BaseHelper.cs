@@ -7,13 +7,22 @@ using System.Web.Mvc;
 
 namespace AdminPanel.Helpers.Forms
 {
-    public class BaseHelper
+    public abstract class BaseHelper
     {
         public HtmlHelper _helper;
 
         public BaseHelper(HtmlHelper helper)
         {
             this._helper = helper;
+        }
+
+        protected abstract string Html();
+
+        protected abstract string Script();
+
+        public override string ToString()
+        {
+            return Html() + Script();
         }
 
         public void Render()

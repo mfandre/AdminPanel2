@@ -16,6 +16,7 @@
                                 .AddColumn("Line", "Linha")
                                 .AddColumn("Uri", "Uri")
                                 .AddColumn("DataReg", "Data",Type:ColumnType.DateTime)
+                                .AddColumn(new DialogColumnItem("DialogScreenshotColumn", "ClientSideJavaScriptExceptionId", "Screenshot", "Screenshot", Url.Action("Screenshot", "ClientSideError"),"Screenshot"))
                                 )
         ).Render();
 }

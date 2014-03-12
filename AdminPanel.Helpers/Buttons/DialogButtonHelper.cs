@@ -29,7 +29,6 @@ namespace AdminPanel.Helpers.Buttons
 
     public class DialogButton : BaseHelper
     {
-        private HtmlHelper Html;
         private string Text;
         private string Url;
         private string ButtonId;
@@ -41,7 +40,6 @@ namespace AdminPanel.Helpers.Buttons
             : base(Html)
         {
             // TODO: Complete member initialization
-            this.Html = Html;
             this.Text = Text;
             this.Url = Url;
             this.ButtonId = ButtonId;
@@ -53,7 +51,6 @@ namespace AdminPanel.Helpers.Buttons
             : base(Html)
         {
             // TODO: Complete member initialization
-            this.Html = Html;
             this.Text = Text;
             this.Url = Url;
             this.ButtonId = ButtonId;
@@ -97,6 +94,16 @@ namespace AdminPanel.Helpers.Buttons
             code += " });\n";
             code += "</script>\n";
             return code;
+        }
+
+        protected override string Html()
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override string Script()
+        {
+            throw new NotImplementedException();
         }
     }
 }

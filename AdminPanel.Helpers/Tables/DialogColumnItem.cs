@@ -9,8 +9,11 @@ namespace AdminPanel.Helpers.Tables
     public class DialogColumnItem : ColumnItem
     {
         private string ButtonText;
+        public bool RefreshOnClose { get; set; }
         public string Url { get; set; }
         public string DialogColumnItemId { get; set; }
+        public string DialogTitle { get; set; }
+
 
         /// <summary>
         /// 
@@ -20,12 +23,15 @@ namespace AdminPanel.Helpers.Tables
         /// <param name="ColName">Identificador que ficará no header da tabela</param>
         /// <param name="ButtonText">Texto do botão</param>
         /// <param name="Url">Url para açao (ajax)</param>
-        public DialogColumnItem(string DialogColumnItemId, string ColData, string ColName, string ButtonText, string Url, int Width = -1)
+        /// <param name="RefreshOnClose">True para dar um reaload no datatable ao fechar o dialogo</param>
+        public DialogColumnItem(string DialogColumnItemId, string ColData, string ColName, string ButtonText, string Url,string DialogTitle,int Width = -1,bool RefreshOnClose = false)
             : base(ColData, ColName, false, true, ColumnType.String, Width)
         {
             this.DialogColumnItemId = DialogColumnItemId;
             this.ButtonText = ButtonText;
             this.Url = Url;
+            this.RefreshOnClose = RefreshOnClose;
+            this.DialogTitle = DialogTitle;
         }
 
         public override string ToString()

@@ -21,18 +21,45 @@ namespace AdminPanel.Helpers.Tables
 
     public class Table : BaseHelper
     {
-        private string _tableId;
-        private string _dataSource;
-        private List<ColumnItem> _listColumns = new List<ColumnItem>();
-        private HtmlHelper _htmlHelper;
         private int _scrollXInner = 100;
+
+        /// <summary>
+        /// Html Id da Datatable, lembre-se que deve ser único por página
+        /// </summary>
+        private string _tableId;
+
+        /// <summary>
+        /// Url que retornara os dados para a datatable
+        /// </summary>
+        private string _dataSource;
+
+        /// <summary>
+        /// Id (html) da Datatable pai para fazer o filtro na Datatable filha quando se clicar em alguma row do pai.
+        /// </summary>
+        private string _parentTableId = null;
+        
+        /// <summary>
+        /// Lista de colunas da Datatable
+        /// </summary>
+        private List<ColumnItem> _listColumns = new List<ColumnItem>();
+
+        /// <summary>
+        /// Geralmente botoes de operacoes da Datatable
+        /// </summary>
         private List<BaseHelper> _toolbarActions = new List<BaseHelper>();
 
-        public Table(HtmlHelper Helper, string TableId, string DataSource) 
+        public Table(HtmlHelper Helper, string TableId, string DataSource, string ParentTableId = null) 
             : base(Helper)
         {
-            this._tableId = TableId;
-            this._htmlHelper = Helper;
+            if (ParentTableId != null)
+            {
+                this._parentTableId = ParentTableId;
+                this._tableId = TableId + "ChildOf" + ParentTableId;
+            }
+            else
+            {
+                this._tableId = TableId;
+            }
             this._dataSource = DataSource;
         }
 
@@ -72,31 +99,113 @@ namespace AdminPanel.Helpers.Tables
             return this;
         }
 
-        public override string ToString()
+        private string HtmlPreFilter()
+        {
+            string columnOptions = "";
+            string operationOptions = "";
+            string code = "";
+
+            foreach (ColumnItem c in _listColumns)
+            {
+                if (c is DialogColumnItem || c is ActionColumnItem)
+                    continue;
+                columnOptions += "   					<option value=\"" + c.ColumnData + "\">" + c.ColumnName + "</option>\n";                
+            }
+
+
+            code += "           <div id=\"" + this._tableId + "PreFilter\" class=\"padding-10\">\n";
+            code += "               <div>\n";
+            code += "                   <h4>Filter</h4>\n";
+            code += "                   <div id=\"" + this._tableId + "PreFilterForm\" class=\"padding-10\">\n";
+
+
+            code += "                   <form class=\"smart-form\" novalidate=\"novalidate\">\n";
+            code += "                       <div class=\"row-fluid\">\n";
+			code += "				            <section class=\"col col-3\">\n";
+			code += "           		            <label class=\"select\">\n";
+			code += "           		            <select name=\"column[]\">\n";
+			code += "           			            <option value=\"0\" selected=\"\" disabled=\"\">Colunas</option>\n";
+            code += columnOptions;
+			code += "           		            </select> <i></i> </label>\n";
+			code += "           	            </section>\n";
+            code += "				            <section class=\"col col-3\">\n";
+            code += "           		            <label class=\"select\">\n";
+            code += "           		            <select name=\"operation[]\">\n";
+            code += "           			            <option value=\"0\" selected=\"\" disabled=\"\">Operações</option>\n";
+            code += "           		            </select> <i></i> </label>\n";
+            code += "           	            </section>\n";
+            code += "				            <section class=\"col col-3\">\n";
+            code += "                               <label class=\"input\">\n";
+			code += "   								<input type=\"text\" name=\"valor\" placeholder=\"Valor\">\n";
+            code += "   							</label>\n";
+            code += "           	            </section>\n";
+            code += "				            <section class=\"col col-3\">\n";
+            code += "   							<a id=\"" + this._tableId + "PreFilterFormAddBtn\" class=\"btn btn-success\" href=\"javascript:void(0);\" style=\"padding: 6px 12px;\">Add</a>\n";
+            code += "   							<a class=\"btn btn-primary\" href=\"javascript:void(0);\" style=\"padding: 6px 12px;\">Pesquisar</a>\n";
+            code += "                           </section>\n";
+            code += "                       </div>\n";
+            code += "                   </form>\n";
+            
+
+            code += "                   </div>\n";
+            code += "               </div>\n";
+            code += "           </div>\n";
+
+            return code;
+        }
+
+        private string HtmlToolbar()
         {
             string code = "";
-            bool HasActionButton = false;
-            //Estrutura HTML
+            
             code += "           <div id=\"" + this._tableId + "Toolbar\" style=\"margin:10px\">\n";
             foreach (BaseHelper btn in this._toolbarActions)
             {
                 code += btn;
             }
             code += "           </div>\n";
-            code += "           <table id=\"" + this._tableId + "\" class=\"table table-striped table-bordered smart-form table-hover\" style=\"width: 100%;\">\n";
+            return code;
+        }
+
+        protected override string Html()
+        {
+            string code = "";
+            //Estrutura HTML
+            code += HtmlPreFilter();
+            code += HtmlToolbar();
+            code += "           <table id=\"" + this._tableId + "\" class=\"table table-striped table-bordered table-hover\" style=\"width: 100%;\">\n";
             code += "               <thead>\n";
             code += "                   <tr>\n";
-            //foreach(ColumnItem col in this._listColumns)
-            //    code += "           <th>" + col.ColumnName + "</th>\n";
             code += "                   </tr>\n";
             code += "               </thead>\n";
             code += "               <tbody>\n";
             code += "               </tbody>\n";
             code += "           </table>\n";
 
+            return code;
+        }
+
+        protected override string Script()
+        {
+            string code = "";
             //JavaScript associado
             code += "<script>\n";
             code += "   $(document).ready(function() {\n";
+
+            //Script filter
+            code += "       $('#" + this._tableId + "PreFilterFormAddBtn').click(function(){\n";
+            code += "           var $clone = $($('#" + this._tableId + "PreFilterForm .smart-form .row-fluid')[0]).children().clone();\n";
+            code += "           $($clone.children()[3]).remove(\"a\").end().append(\"<a class='btn btn-danger' href='javascript:void(0);' style='padding: 6px 12px;'>Remove</a>\").appendTo($('#" + this._tableId + "PreFilterForm .smart-form'));\n";
+            code += "       });\n";
+
+            code += "       $(\"#" + this._tableId + "PreFilter\").accordion({\n";
+            code += "	        autoHeight : false,\n";
+            code += "	        heightStyle : \"content\",\n";
+            code += "	        collapsible : true,\n";
+            code += "	        animate : 300,\n";
+            code += "	        icons: { header: \"fa fa-plus\", activeHeader: \"fa fa-minus\"},\n";
+            code += "	        header : \"h4\"\n";
+            code += "       });\n";
             code += "        var " + this._tableId + " = $('#" + this._tableId + "').DataTable({\n";
             code += "            \"sPaginationType\" : \"bootstrap\",\n";
             code += "            \"sDom\" : \"R<'dt-top-row'Clf>r<'dt-wrapper't><'dt-row dt-bottom-row'<'row'<'col-sm-6'i><'col-sm-6 text-right'p>>\",";
@@ -106,19 +215,32 @@ namespace AdminPanel.Helpers.Tables
             code += "            \"bAutoWidth\": true,\n";
             //code += "            \"sScrollX\": \"100%\",\n";
             //code += "            \"sScrollXInner\": \"" + this._scrollXInner + "%\",\n";
-		    //code += "            \"bScrollCollapse\": true,\n";
+            //code += "            \"bScrollCollapse\": true,\n";
             code += "            \"aoColumns\": [\n";
             foreach (ColumnItem col in this._listColumns)
             {
                 code += col + "   ,\n";
             }
-            code = code.Remove(code.Length-2) + "\n"; // removendo a ultima virgula
+            code = code.Remove(code.Length - 2) + "\n"; // removendo a ultima virgula
             code += "            ],\n";
             code += "           \"aoColumnDefs\": [],\n";
             code += "            \"oLanguage\": {\n";
             code += "                \"sProcessing\": \"<div class='progress progress-striped active' style='width: 80%;margin: 0 auto;'><div class='progress-bar'  role='progressbar' aria-valuenow='100' aria-valuemin='0' aria-valuemax='100' style='width: 100%'><span class='sr-only'>Processando</span></div></div>\"\n";
             code += "            },\n";
             code += "            \"fnDrawCallback\" : function(oSettings) {\n";
+            
+            //Script select row
+            code += "               $(\"#" + this._tableId + " tbody tr\").click( function( e ) {\n";
+            code += "                   if ( $(this).hasClass('row_selected') ) {\n";
+            code += "                       $(this).removeClass('row_selected');\n";
+            code += "                   }\n";
+            code += "                   else {\n";
+            code += "                       $('#" + this._tableId + "').dataTable().$('tr.row_selected').removeClass('row_selected');\n";
+            code += "                       $(this).addClass('row_selected');\n";
+            code += "                   }\n";
+            code += "               });\n";
+
+            //Botão columns
             code += "               $('.ColVis_Button').addClass('btn btn-default btn-sm').html('Columns <i class=\"icon-arrow-down\"></i>');\n";
             //Handler do ActionButton
             for (int i = 0; i < this._listColumns.Count; i++)
@@ -137,20 +259,22 @@ namespace AdminPanel.Helpers.Tables
                     code += "          button.addClass('disabled');\n";
                     code += "          var dialog_" + d.DialogColumnItemId + " = $('<div class=\"modal-body no-padding\" id=\"dialog_" + d.DialogColumnItemId + "Dialog\" style=\"display:none\"></div>').appendTo('body');\n";
                     code += "          dialog_" + d.DialogColumnItemId + ".dialog({\n";
+                    code += "              width       : $(window).width(),\n";
+                    code += "              height      : $(window).height(),\n";
                     code += "              close: function(event,ui){\n";
                     code += "                  dialog_" + d.DialogColumnItemId + ".remove()\n";
                     code += "                  button.children().removeClass('fa-refresh');\n";
                     code += "                  button.children().addClass('fa-gear');\n";
                     code += "                  button.children().removeClass('fa-spin');\n";
                     code += "                  button.removeClass('disabled');\n";
-                    code += "                  $('#" + this._tableId + "').dataTable().fnDraw(); //atualizando a datatable\n";
+                    if (d.RefreshOnClose) code += "                  $('#" + this._tableId + "').dataTable().fnDraw(); //atualizando a datatable\n";
                     code += "              },\n";
                     code += "              position: ['center',20],\n";
                     code += "              modal: true\n";
                     code += "          });\n";
                     code += "          dialog_" + d.DialogColumnItemId + ".load(url+'/'+$(this).data('id'),\n";
                     code += "              function(responseText, textStatus,XMLHttpRequest){\n";
-                    code += "                  $(\"<b>Teste</b>\").appendTo($('.ui-dialog-titlebar .ui-dialog-title'))\n";
+                    code += "                  $(\"<b>" + d.DialogTitle + "</b>\").appendTo($('.ui-dialog-titlebar .ui-dialog-title'))\n";
                     code += "              }\n";
                     code += "          );\n";
                     code += "          return false;\n";
@@ -158,7 +282,6 @@ namespace AdminPanel.Helpers.Tables
                 }
                 else if (this._listColumns[i] is ActionColumnItem)
                 {
-                    HasActionButton = true;
                     ActionColumnItem c = this._listColumns[i] as ActionColumnItem;
                     code += "   var buttons = $('." + c.ActionColumnItemId + "');\n";
                     code += "   for (var i = 0; i < buttons.length; i++)\n";

@@ -54,5 +54,15 @@ namespace AdminPanel.Helpers.Widget
             code += "<script>$('#" + this._tabComponentId + "').tabs();</script>\n";
             return code;
         }
+
+        protected override string Html()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        protected override string Script()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

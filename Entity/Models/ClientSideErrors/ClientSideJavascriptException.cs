@@ -14,13 +14,14 @@ namespace Entity.Models.ClientSideErrors
         public string Url { get; set; }
         public string Line { get; set; }
         public string Uri { get; set; }
+        public string Screenshot { get; set; }
 
         private DateTime _dataReg;
         public DateTime DataReg
         {
             get
             {
-                if (_dataReg == null)
+                if (_dataReg == null || _dataReg == DateTime.MinValue)
                     _dataReg = DateTime.Now;
                 return _dataReg;
             }

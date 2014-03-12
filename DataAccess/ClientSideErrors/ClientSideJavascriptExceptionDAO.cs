@@ -42,5 +42,17 @@ namespace DataAccess.ClientSideErrors
         {
             _unitOfWork.Dispose();
         }
+
+        public ClientSideJavaScriptException ReadOne(int id)
+        {
+            try
+            {
+                return _unitOfWork.Repository<ClientSideJavaScriptException>().SingleOrDefault(s => s.ClientSideJavaScriptExceptionId == id);
+            }
+            catch
+            {
+                throw;
+            }
+        }
     }
 }

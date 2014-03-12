@@ -34,5 +34,15 @@ namespace AdminPanel2.Controllers.ClientSideErrors
             return Json(dtParser.Parse(), JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult Screenshot(int id = 0)
+        {
+            ClientSideJavascriptExceptionDAO dao = new ClientSideJavascriptExceptionDAO();
+            ClientSideJavaScriptException error = dao.ReadOne(id);
+            if (error == null)
+            {
+                return HttpNotFound();
+            }
+            return View(error);
+        }
     }
 }

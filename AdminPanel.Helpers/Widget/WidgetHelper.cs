@@ -46,6 +46,16 @@ namespace AdminPanel.Helpers.Widget
             code += "</section>\n";
             //code += "<script>setup_widgets_desktop();</script>\n";
             return code;
-        }  
+        }
+
+        protected override string Html()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        protected override string Script()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

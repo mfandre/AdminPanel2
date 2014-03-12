@@ -65,6 +65,7 @@
     <Compile Include="Tables\jQueryDataTableParamModel.cs" />
     <Compile Include="Tables\SimpleTableHelper.cs" />
     <Compile Include="Tables\StatusColumnItem.cs" />
+    <Compile Include="Tables\TemplatedColumnItem.cs" />
     <Compile Include="Tabs\Tab.cs" />
     <Compile Include="Tabs\TabHelper.cs" />
     <Compile Include="Widget\Widget.cs" />

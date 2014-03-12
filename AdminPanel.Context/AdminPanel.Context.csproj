@@ -187,6 +187,10 @@
     <Compile Include="Migrations\201402260127057_AddListMenuItem17.Designer.cs">
       <DependentUpon>201402260127057_AddListMenuItem17.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201403020145314_AdicionandoScreenshotErro.cs" />
+    <Compile Include="Migrations\201403020145314_AdicionandoScreenshotErro.Designer.cs">
+      <DependentUpon>201403020145314_AdicionandoScreenshotErro.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -303,6 +307,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201402260127057_AddListMenuItem17.resx">
       <DependentUpon>201402260127057_AddListMenuItem17.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201403020145314_AdicionandoScreenshotErro.resx">
+      <DependentUpon>201403020145314_AdicionandoScreenshotErro.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

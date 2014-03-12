@@ -22,8 +22,11 @@
 		<!-- SmartAdmin Styles : Please note (smartadmin-production.css) was created using LESS variables -->
 		<link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-production.css">
 		<link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-skins.css">
-
-		<!-- FAVICONS -->
+        <link rel="stylesheet" type="text/css" media="screen" href="css/your_style.css">
+        
+        <script src="~/js/plugin/html2canvas/html2canvas.js"></script>
+		
+        <!-- FAVICONS -->
 		<link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon">
 		<link rel="icon" href="img/favicon/favicon.ico" type="image/x-icon">
 
@@ -32,13 +35,16 @@
 
         <script>
             window.onerror = function (m, u, l) {
-
-                $.ajax({
-                    url: '@Url.Action("Occurred", "ClientSideError")',
-                    type: 'POST',
-                    dataType: 'json',
-                    data: JSON.stringify({ ErrorMsg: m, Url: u, Line: l, Uri: window.location.href }),
-                    contentType: 'application/json; charset=utf-8',
+                html2canvas(document.body, {
+                    onrendered: function (canvas) {
+                        $.ajax({
+                            url: '@Url.Action("Occurred", "ClientSideError")',
+                            type: 'POST',
+                            dataType: 'json',
+                            data: JSON.stringify({ ErrorMsg: m, Url: u, Line: l, Uri: window.location.href, Screenshot: canvas.toDataURL("image/jpeg") }),
+                            contentType: 'application/json; charset=utf-8',
+                        });
+                    }
                 });
 
                 return true;

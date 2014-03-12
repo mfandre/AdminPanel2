@@ -23,7 +23,6 @@ namespace AdminPanel.Helpers.Tables
 
     public class SimpleTable : BaseHelper
     {
-        private HtmlHelper Html;
         private string TableId;
         private string DataSource;
         private List<List<string>> Data = new List<List<string>>();
@@ -32,14 +31,12 @@ namespace AdminPanel.Helpers.Tables
         public SimpleTable(HtmlHelper Html, string TableId) : base (Html)
         {
             // TODO: Complete member initialization
-            this.Html = Html;
             this.TableId = TableId;
         }
 
         public SimpleTable(HtmlHelper Html, string TableId, string DataSource) : base (Html)
         {
             // TODO: Complete member initialization
-            this.Html = Html;
             this.TableId = TableId;
             this.DataSource = DataSource;
         }
@@ -88,6 +85,16 @@ namespace AdminPanel.Helpers.Tables
             return code;
         }
 
-        
+
+
+        protected override string Script()
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override string Html()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -173,6 +173,16 @@ namespace AdminPanel.Helpers.Forms
             return code;
         }
 
-            
+
+
+        protected override string Html()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        protected override string Script()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
