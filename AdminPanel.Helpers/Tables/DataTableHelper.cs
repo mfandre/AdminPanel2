@@ -37,7 +37,9 @@ namespace AdminPanel.Helpers.Tables
         /// Id (html) da Datatable pai para fazer o filtro na Datatable filha quando se clicar em alguma row do pai.
         /// </summary>
         private string _parentTableId = null;
-        
+        private string _parentJoinField = null;
+        private string _childJoinField = null;
+
         /// <summary>
         /// Lista de colunas da Datatable
         /// </summary>
@@ -48,19 +50,42 @@ namespace AdminPanel.Helpers.Tables
         /// </summary>
         private List<BaseHelper> _toolbarActions = new List<BaseHelper>();
 
-        public Table(HtmlHelper Helper, string TableId, string DataSource, string ParentTableId = null) 
+        /// <summary>
+        /// Filtro avancado, adicionar campos dinamicamente para busca
+        /// </summary>
+        private bool _advancedFilter = false;
+
+        /// <summary>
+        /// POST ou GET
+        /// </summary>
+        private string _method = "GET";
+
+        public Table(HtmlHelper Helper, string TableId, string DataSource) 
             : base(Helper)
         {
-            if (ParentTableId != null)
-            {
-                this._parentTableId = ParentTableId;
-                this._tableId = TableId + "ChildOf" + ParentTableId;
-            }
-            else
-            {
-                this._tableId = TableId;
-            }
+            this._tableId = TableId;
             this._dataSource = DataSource;
+        }
+
+        public Table setAsTableDetail(string ParentTableId, string ParentJoinField, string ChildJoinField)
+        {
+            this._parentTableId = ParentTableId;
+            this._parentJoinField = ParentJoinField;
+            this._childJoinField = ChildJoinField;
+            this._tableId = _tableId + "ChildOf" + ParentTableId;
+            return this;
+        }
+
+        public Table setMethod(string method)
+        {
+            this._method = method;
+            return this;
+        }
+
+        public Table setAdvancedFilter(bool hasAdvancedFilter)
+        {
+            this._advancedFilter = hasAdvancedFilter;
+            return this;
         }
 
         public Table setScrollXInner(int size)
@@ -99,8 +124,11 @@ namespace AdminPanel.Helpers.Tables
             return this;
         }
 
-        private string HtmlPreFilter()
+        private string HtmlAdvancedFilter()
         {
+            if (!this._advancedFilter)
+                return "";
+
             string columnOptions = "";
             string operationOptions = "";
             string code = "";
@@ -171,7 +199,7 @@ namespace AdminPanel.Helpers.Tables
         {
             string code = "";
             //Estrutura HTML
-            code += HtmlPreFilter();
+            //code += HtmlAdvancedFilter();
             code += HtmlToolbar();
             code += "           <table id=\"" + this._tableId + "\" class=\"table table-striped table-bordered table-hover\" style=\"width: 100%;\">\n";
             code += "               <thead>\n";
@@ -206,11 +234,43 @@ namespace AdminPanel.Helpers.Tables
             code += "	        icons: { header: \"fa fa-plus\", activeHeader: \"fa fa-minus\"},\n";
             code += "	        header : \"h4\"\n";
             code += "       });\n";
+
+            //Table
             code += "        var " + this._tableId + " = $('#" + this._tableId + "').DataTable({\n";
             code += "            \"sPaginationType\" : \"bootstrap\",\n";
             code += "            \"sDom\" : \"R<'dt-top-row'Clf>r<'dt-wrapper't><'dt-row dt-bottom-row'<'row'<'col-sm-6'i><'col-sm-6 text-right'p>>\",";
             code += "            \"bServerSide\": true,\n";
             code += "            \"sAjaxSource\": \"" + this._dataSource + "\",\n";
+            code += "            \"fnServerData\": function ( sSource, aoData, fnCallback, oSettings ) {\n";
+            code += "                       $('#" + this._tableId + "_processing').show();\n";
+            
+            if (this._parentTableId != null)
+            {
+                //logica para nao carregar a primeira vez a table filha
+                code += "                   if($('#" + this._parentTableId + "').dataTable().$('tr.row_selected').length == 0){\n";
+                code += "                       $('#" + this._tableId + "_processing').hide();\n";
+                code += "                       return;\n";
+                code += "                   }\n";
+
+                //logica para quando o pai estiver selecionado, pegar o valor do joinfield e filtrar a grid filha
+                code += "                       $( \"table[id$='ChildOf" + this._parentTableId + "']\" ).each(function(idx,dt){\n";
+                code += "                           $($('#" + this._parentTableId + "').dataTable().fnGetNodes()).each(function(jdx,el){\n";
+                code += "                               if ($(el).hasClass('row_selected')){\n";
+                code += "                                   var valueofParentJoinField = $('#" + this._parentTableId + "').dataTable().fnGetData(jdx)." + this._parentJoinField + ";\n";
+                code += "                                   aoData.push({ name : \"" + this._childJoinField + "\", value : valueofParentJoinField });\n";
+                code += "                                   return false;\n";
+                code += "                               }\n";
+                code += "                           });\n";
+                code += "                       });\n";
+            }
+            code += "               oSettings.jqXHR = $.ajax( {\n";
+            code += "                   \"dataType\": 'json',\n";
+            code += "                   \"type\": \"" + this._method + "\",\n";
+            code += "                   \"url\": sSource,\n";
+            code += "                   \"data\": aoData,\n";
+            code += "                   \"success\": fnCallback\n";
+            code += "               } );\n";
+            code += "            },\n";
             code += "            \"bProcessing\": true,\n";
             code += "            \"bAutoWidth\": true,\n";
             //code += "            \"sScrollX\": \"100%\",\n";
@@ -231,12 +291,18 @@ namespace AdminPanel.Helpers.Tables
             
             //Script select row
             code += "               $(\"#" + this._tableId + " tbody tr\").click( function( e ) {\n";
+            //code += "                   //$('[id=\"ChildOf" + this._parentTableId + "\"]').dataTable({\"fnServerParams\": function ( aoData ) {aoData.push(\"Id\" : 3)}}).fnDraw();\n";
             code += "                   if ( $(this).hasClass('row_selected') ) {\n";
             code += "                       $(this).removeClass('row_selected');\n";
             code += "                   }\n";
             code += "                   else {\n";
             code += "                       $('#" + this._tableId + "').dataTable().$('tr.row_selected').removeClass('row_selected');\n";
             code += "                       $(this).addClass('row_selected');\n";
+            code += "                       //Fazendo filtrando o gripd pelo registro selecionado no pai\n";
+            code += "                       $( \"table[id$='ChildOf" + this._tableId + "']\" ).each(function(idx,dt){\n";
+            code += "                               var datatable = $(dt).dataTable();\n";
+            code += "                               datatable.fnClearTable();\n";
+            code += "                       });\n";
             code += "                   }\n";
             code += "               });\n";
 
@@ -336,6 +402,7 @@ namespace AdminPanel.Helpers.Tables
                 }
             }
             code += "            },\n";
+
             //Essa logica serve para alterar a coluna que sofrerá o primeiro order by
             //if (HasActionButton)
             //{

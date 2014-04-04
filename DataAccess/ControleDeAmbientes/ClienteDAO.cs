@@ -56,6 +56,32 @@ namespace DataAccess.ControleDeAmbientes
             }
         }
 
+        public IQueryable<Cliente> GetServidoresSde(int id)
+        {
+            try
+            {
+                return _unitOfWork.Repository<Cliente>().Query().Filter(u => u.ClienteId == id).Include(u => u.ServidoresSde).Get();
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        public IQueryable<Cliente> GetArcgisServers(int id)
+        {
+            try
+            {
+                return _unitOfWork.Repository<Cliente>().Query().Filter(u => u.ClienteId == id).Include(u => u.ArcgisServers).Get();
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+
+
         public Cliente ReadOne(int id)
         {
             try

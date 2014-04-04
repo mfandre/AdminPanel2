@@ -356,6 +356,8 @@
     <Content Include="js\bootstrap\bootstrap.js" />
     <Content Include="js\bootstrap\bootstrap.min.js" />
     <Content Include="js\demo.js" />
+    <Content Include="js\introjs\intro.min.js" />
+    <Content Include="css\introjs.min.css" />
     <Content Include="js\libs\jquery-2.0.2.min.js" />
     <Content Include="js\libs\jquery-ui-1.10.3.min.js" />
     <Content Include="js\notification\SmartNotification.js" />

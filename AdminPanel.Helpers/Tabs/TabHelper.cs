@@ -43,7 +43,7 @@ namespace AdminPanel.Helpers.Widget
             }
 
             string code = "";
-            code += "<div class=\"well well-sm well-light\">\n";
+            code += "<div class=\"well well-sm well-light no-border\">\n";
             code += "   <div id=\"" + this._tabComponentId + "\">\n";
             code += "       <ul>\n";
             code += tabMenu;

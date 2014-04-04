@@ -55,6 +55,8 @@
     <Compile Include="Forms\InputHidden.cs" />
     <Compile Include="Forms\InputPasswordWithLabel.cs" />
     <Compile Include="Forms\InputTextWithLabel.cs" />
+    <Compile Include="HelpHints\SingleHelpHint.cs" />
+    <Compile Include="HelpHints\Tutorial.cs" />
     <Compile Include="JsonResults\ActionJsonResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tables\ColumnItem.cs" />

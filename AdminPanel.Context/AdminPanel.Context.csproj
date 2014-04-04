@@ -191,6 +191,10 @@
     <Compile Include="Migrations\201403020145314_AdicionandoScreenshotErro.Designer.cs">
       <DependentUpon>201403020145314_AdicionandoScreenshotErro.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201403130022160_addListServidoresSdeToCliente.cs" />
+    <Compile Include="Migrations\201403130022160_addListServidoresSdeToCliente.Designer.cs">
+      <DependentUpon>201403130022160_addListServidoresSdeToCliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -310,6 +314,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201403020145314_AdicionandoScreenshotErro.resx">
       <DependentUpon>201403020145314_AdicionandoScreenshotErro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201403130022160_addListServidoresSdeToCliente.resx">
+      <DependentUpon>201403130022160_addListServidoresSdeToCliente.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

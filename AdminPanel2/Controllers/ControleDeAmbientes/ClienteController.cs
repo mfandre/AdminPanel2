@@ -94,5 +94,49 @@ namespace AdminPanel2.Controllers.ControleDeAmbientes
             DataTableParser<Cliente> dtParser = new DataTableParser<Cliente>(Request, clientes);
             return Json(dtParser.Parse(), JsonRequestBehavior.AllowGet);
         }
+
+        public JsonResult ReadAllServidoresSde(int ClienteId)
+        {
+            ClienteDAO clienteDAO = new ClienteDAO();
+            IQueryable<Cliente> clientes = clienteDAO.GetServidoresSde(ClienteId);
+
+            DataTableParser<Sde> dtParser = new DataTableParser<Sde>(Request, clientes.SingleOrDefault().ServidoresSde.AsQueryable().Select(
+                /*Definindo os campos que serao apresentandos, alem de eliminar os atributos circular*/
+                s => new Sde(){
+                    ArcgisVersion = s.ArcgisVersion,
+                    ConnDirect = s.ConnDirect,
+                    DataReg = s.DataReg,
+                    EstReg = s.EstReg,
+                    Instance = s.Instance,
+                    Login = s.Login,
+                    Name = s.Name,
+                    Password = s.Password,
+                    SdeId = s.SdeId,
+                    Server = s.Server,
+                    Service = s.Service,
+                    Version = s.Version
+                }));
+            return Json(dtParser.Parse(), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult ReadAllArcgisServer(int ClienteId)
+        {
+            ClienteDAO clienteDAO = new ClienteDAO();
+            IQueryable<Cliente> clientes = clienteDAO.GetArcgisServers(ClienteId);
+
+            DataTableParser<ArcgisServer> dtParser = new DataTableParser<ArcgisServer>(Request, clientes.SingleOrDefault().ArcgisServers.AsQueryable().Select(
+                /*Definindo os campos que serao apresentandos, alem de eliminar os atributos circular*/
+                s => new ArcgisServer()
+                {
+                    ArcgisVersion = s.ArcgisVersion,
+                    Name = s.Name,
+                    Url = s.Url,
+                    Login = s.Login,
+                    Password = s.Password,
+                    DataReg = s.DataReg,
+                    EstReg = s.EstReg
+                }));
+            return Json(dtParser.Parse(), JsonRequestBehavior.AllowGet);
+        }
     }
 }

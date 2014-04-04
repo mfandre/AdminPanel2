@@ -3,48 +3,56 @@
 @using AdminPanel.Helpers.Widget;
 @using AdminPanel.Helpers.Buttons;
 @using AdminPanel.Helpers.Tabs;
+@using AdminPanel.Helpers.HelpHints;
 
 @{
     ViewBag.Title = "Clientes";
     Layout = "~/Views/Shared/_EmptyPage.cshtml";
 }
 
-<h2>TSTSETETRSETSETSTE</h2>
-
 @{
     //Html.DialogButton("Create", "Novo", Url.Action("Create", "Cliente")).Render();
     
     Html.CorePanelWidgets("PainelCliente")
-        .AddWidget(new Widget("WidgetTableCliente","Clientes")
+        .AddWidget(new Widget("WidgetTableCliente", "Tabs")
             .AddItem(
                 Html.Table("tableCliente", Url.Action("ReadAll", "Cliente"))
-                    .addAction(Html.DialogButton("CreateClienteBtn", "Novo", Url.Action("Create", "Cliente"),"Inserção de cliente"))
-                    .addAction(Html.RefreshDatatableButton("RefreshDatatableCliente", "Refresh", "tableCliente"))
-                    .AddColumn(new ActionColumnItem("ExcluirActionTableCliente", "ClienteId", "Exclusão", "Excluir", Url.Action("Delete", "Cliente", null, Request.Url.Scheme)))
-                    .AddColumn(new DialogColumnItem("EditActionTableCliente", "ClienteId", "Edição", "Editar", Url.Action("Edit", "Cliente"),"Editar"))
-                    .AddColumn("Name", "Nome")
-                    .AddColumn("Localidade", "Localidade")
-                    .AddColumn(new TemplatedColumnItem("EstReg", "Status","<b>{data}</b>"))
+                                .addAction(Html.DialogButton("CreateClienteBtn1", "Novo", Url.Action("Create", "Cliente"), "Inserção de cliente"))
+                                .addAction(Html.RefreshDatatableButton("RefreshDatatableCliente", "Refresh", "tableCliente"))
+                                .AddColumn(new ActionColumnItem("ExcluirActionTableCliente", "ClienteId", "Exclusão", "Excluir", Url.Action("Delete", "Cliente", null, Request.Url.Scheme)))
+                                .AddColumn(new DialogColumnItem("EditActionTableCliente", "ClienteId", "Edição", "Editar", Url.Action("Edit", "Cliente"), "Editar"))
+                                .AddColumn("Name", "Nome")
+                                .AddColumn("Localidade", "Localidade")
             )
-        )
-        .AddWidget(new Widget("WidgetTableCliente1", "Tabs")
             .AddItem(
-                Html.TabComponent("tabCliente")
-                    .AddTab(new Tab("tabCliente1","Tab 1")
-                                .AddItem(Html.Table("tableCliente1", Url.Action("ReadAll", "Cliente"))
-                                .addAction(Html.DialogButton("CreateClienteBtn1", "Novo", Url.Action("Create", "Cliente"),"Inserção de cliente"))
-                                .addAction(Html.RefreshDatatableButton("RefreshDatatableCliente1", "Refresh", "tableCliente"))
-                                .AddColumn(new ActionColumnItem("ExcluirActionTableCliente1", "ClienteId", "Exclusão", "Excluir", Url.Action("Delete", "Cliente", null, Request.Url.Scheme)))
-                                .AddColumn(new DialogColumnItem("EditActionTableCliente1", "ClienteId", "Edição", "Editar", Url.Action("Edit", "Cliente"),"Editar"))
-                                .AddColumn("Name", "Nome")
-                                .AddColumn("Localidade", "Localidade")))
-                    .AddTab(new Tab("tabCliente2","Tab 2")
-                                .AddItem(Html.Table("tableCliente2", Url.Action("ReadAll", "Cliente"))
-                                .AddColumn("Name", "Nome")
-                                .AddColumn("Localidade", "Localidade")))
+                Html.TabComponent("TabCliente")
+                    .AddTab(new Tab("tabServidoresSDE","Servidores SDE")
+                                .AddItem(Html.Table("tableServidoresSDE", Url.Action("ReadAllServidoresSde", "Cliente"))
+                                            .AddColumn("Name", "Nome")
+                                            .AddColumn("Login", "Login")
+                                            .AddColumn("Password", "Password")
+                                            .setAsTableDetail("tableCliente", "ClienteId", "ClienteId")
+                                        )
+                            )
+                    .AddTab(new Tab("tabArcgisServer", "Arcgis Server")
+                                .AddItem(Html.Table("tableArcgisServer", Url.Action("ReadAllArcgisServer", "Cliente"))
+                                            .AddColumn("Name", "Nome")
+                                            .AddColumn("Url", "Url")
+                                            .AddColumn("ArcgisVersion", "Versão")
+                                            .AddColumn("Login", "Login")
+                                            .AddColumn("Password", "Password")
+                                            .setAsTableDetail("tableCliente", "ClienteId", "ClienteId")
+                                        )
+                            )
             )
         )
         .Render();
-        
-       
+
+    Html.Tutorial()
+        .addHints("#tableCliente", "Grid com informações do cliente")
+        .addHints(".ExcluirActionTableCliente", "Exclusão de Cliente", SingleHelpHintPosition.right)
+        .addHints(".EditActionTableCliente", "Edição de Cliente")
+        .addHints("#TabCliente", "Tabs referentes a todas as grids FILHAS do grid de cliente.", SingleHelpHintPosition.top)
+        .Render();
+              
 }

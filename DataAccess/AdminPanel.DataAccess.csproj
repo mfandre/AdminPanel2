@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClientSideErrors\ClientSideJavascriptExceptionDAO.cs" />
+    <Compile Include="ControleDeAmbientes\ArcgisServerDAO.cs" />
     <Compile Include="ControleDeAmbientes\ClienteDAO.cs" />
     <Compile Include="ControleDeAmbientes\SdeDAO.cs" />
     <Compile Include="Menu\MenuDAO.cs" />

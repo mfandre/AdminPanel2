@@ -28,6 +28,9 @@ namespace Entity.Models
             }
         }
 
+        public virtual List<Sde> ServidoresSde { get; set; }
+        public virtual List<ArcgisServer> ArcgisServers { get; set; }
+
         private string _estReg;
         public string EstReg
         {
@@ -44,5 +47,6 @@ namespace Entity.Models
                 _estReg = value;
             }
         }
+
     }
 }
