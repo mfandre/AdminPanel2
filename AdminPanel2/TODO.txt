@@ -1,0 +1,5 @@
+﻿- Adicionar DesingPattern nos Comandos
+	- BehaviorPopup
+	- BehaviorAction
+- Passar os arquivos CSS/JS/Sounds para a solution dos HtmlHelpers, e na build dessa solution levar essas pastas para a pasta de saída
+-

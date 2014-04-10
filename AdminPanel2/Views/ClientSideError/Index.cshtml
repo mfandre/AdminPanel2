@@ -3,7 +3,6 @@
 
 @{
     ViewBag.Title = "Client Side Errors";
-    Layout = "~/Views/Shared/_EmptyPage.cshtml";
 }
 
 @{
@@ -17,6 +16,7 @@
                                 .AddColumn("Uri", "Uri")
                                 .AddColumn("DataReg", "Data",Type:ColumnType.DateTime)
                                 .AddColumn(new DialogColumnItem("DialogScreenshotColumn", "ClientSideJavaScriptExceptionId", "Screenshot", "Screenshot", Url.Action("Screenshot", "ClientSideError"),"Screenshot"))
+                                .setScrollXInner(200)
                                 )
         ).Render();
 }

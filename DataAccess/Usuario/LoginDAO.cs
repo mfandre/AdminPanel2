@@ -18,7 +18,7 @@ namespace DataAccess.Usuario
         /// todas as informacoes.
         /// </summary>
         /// <returns></returns>
-        public User CheckLogin(User usuario)
+        public virtual User CheckLogin(User usuario)
         {
             try
             {

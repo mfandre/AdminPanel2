@@ -2,12 +2,12 @@
 @using AdminPanel.Helpers.Tables;
 @using AdminPanel.Helpers.Widget;
 @using AdminPanel.Helpers.Buttons;
+@using AdminPanel.Helpers.Buttons.Behaviors;
 @using AdminPanel.Helpers.Tabs;
 @using AdminPanel.Helpers.HelpHints;
 
 @{
     ViewBag.Title = "Clientes";
-    Layout = "~/Views/Shared/_EmptyPage.cshtml";
 }
 
 @{
@@ -17,8 +17,12 @@
         .AddWidget(new Widget("WidgetTableCliente", "Tabs")
             .AddItem(
                 Html.Table("tableCliente", Url.Action("ReadAll", "Cliente"))
-                                .addAction(Html.DialogButton("CreateClienteBtn1", "Novo", Url.Action("Create", "Cliente"), "Inserção de cliente"))
-                                .addAction(Html.RefreshDatatableButton("RefreshDatatableCliente", "Refresh", "tableCliente"))
+                                .addAction(
+                                    Html.SingleButton("CreateClienteBtn1", "Novo")
+                                    .SetBehavior(new DialogBehavior(Url.Action("Create", "Cliente"), "Inserção de cliente")))
+                                .addAction(
+                                    Html.SingleButton("RefreshDatatableCliente", "Refresh")
+                                    .SetBehavior(new RefreshDatatableBehavior("tableCliente")))
                                 .AddColumn(new ActionColumnItem("ExcluirActionTableCliente", "ClienteId", "Exclusão", "Excluir", Url.Action("Delete", "Cliente", null, Request.Url.Scheme)))
                                 .AddColumn(new DialogColumnItem("EditActionTableCliente", "ClienteId", "Edição", "Editar", Url.Action("Edit", "Cliente"), "Editar"))
                                 .AddColumn("Name", "Nome")

@@ -45,11 +45,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseHelper.cs" />
-    <Compile Include="Buttons\ActionButtonHelper.cs" />
+    <Compile Include="Buttons\Behaviors\RefreshDatatableBehavior.cs" />
+    <Compile Include="Buttons\SingleButtonHelper.cs" />
+    <Compile Include="Buttons\Behaviors\ActionBehavior.cs" />
+    <Compile Include="Buttons\Behaviors\DialogBehavior.cs" />
+    <Compile Include="Buttons\Behaviors\IButtonBehavior.cs" />
     <Compile Include="Buttons\RefreshDatatableButtonHelper.cs" />
-    <Compile Include="Buttons\DialogButtonHelper.cs" />
     <Compile Include="Forms\AjaxFormHelper.cs" />
     <Compile Include="Forms\AutoCompleteInputWithLabel.cs" />
+    <Compile Include="Forms\FormHelper.cs" />
     <Compile Include="Forms\FormItem.cs" />
     <Compile Include="Forms\InputDateWithLabel.cs" />
     <Compile Include="Forms\InputHidden.cs" />

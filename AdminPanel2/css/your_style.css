@@ -18,6 +18,13 @@
  * - CUSTOM STYLES
  */
 
+th, td
+{
+    -webkit-box-sizing: content-box; 
+-moz-box-sizing: content-box;  
+-sizing: content-box;
+}
+
 .TableTools_collection
 {
     list-style: none;

@@ -29,6 +29,7 @@ namespace AdminPanel2.App_Start
                         "~/js/plugin/datatables/ColVis.min.js",
                         "~/js/plugin/datatables/DT_bootstrap.js",
                         "~/js/plugin/datatables/FixedColumns.min.js",
+                        //"~/js/plugin/datatables/Scrollx.js",
                         "~/js/plugin/datatables/ZeroClipboard.js",
                         "~/js/plugin/datatables/jquery.dataTablesPlugins.js",
                         "~/js/introjs/intro.min.js"

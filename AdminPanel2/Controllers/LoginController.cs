@@ -32,7 +32,7 @@ namespace AdminPanel2.Controllers
                     user = loginDAO.CheckLogin(user);
                     if (user != null)
                     {
-                        FormsAuthentication.SetAuthCookie(user.Username, true);
+                        //FormsAuthentication.SetAuthCookie(user.Username, true);
                         
                         Session.Add("usuario", user);
                         

@@ -268,14 +268,17 @@ namespace AdminPanel.Helpers.Tables
             code += "                   \"type\": \"" + this._method + "\",\n";
             code += "                   \"url\": sSource,\n";
             code += "                   \"data\": aoData,\n";
-            code += "                   \"success\": fnCallback\n";
+            code += "                   \"success\": fnCallback,\n";
+            code += "                   \"complete\": function(jqXHR,status){\n";
+            code += "                       setTimeout(function(){$(\"#" + this._tableId + "\").dataTable().fnAdjustColumnSizing(false);},300);\n";
+            code += "                   }\n";
             code += "               } );\n";
             code += "            },\n";
             code += "            \"bProcessing\": true,\n";
-            code += "            \"bAutoWidth\": true,\n";
-            //code += "            \"sScrollX\": \"100%\",\n";
-            //code += "            \"sScrollXInner\": \"" + this._scrollXInner + "%\",\n";
-            //code += "            \"bScrollCollapse\": true,\n";
+            code += "            \"bAutoWidth\": false,\n";
+            code += "            \"sScrollX\": \"100%\",\n";
+            code += "            \"sScrollXInner\": \"" + this._scrollXInner + "%\",\n";
+            code += "            \"bScrollCollapse\": true,\n";
             code += "            \"aoColumns\": [\n";
             foreach (ColumnItem col in this._listColumns)
             {
@@ -288,7 +291,6 @@ namespace AdminPanel.Helpers.Tables
             code += "                \"sProcessing\": \"<div class='progress progress-striped active' style='width: 80%;margin: 0 auto;'><div class='progress-bar'  role='progressbar' aria-valuenow='100' aria-valuemin='0' aria-valuemax='100' style='width: 100%'><span class='sr-only'>Processando</span></div></div>\"\n";
             code += "            },\n";
             code += "            \"fnDrawCallback\" : function(oSettings) {\n";
-            
             //Script select row
             code += "               $(\"#" + this._tableId + " tbody tr\").click( function( e ) {\n";
             //code += "                   //$('[id=\"ChildOf" + this._parentTableId + "\"]').dataTable({\"fnServerParams\": function ( aoData ) {aoData.push(\"Id\" : 3)}}).fnDraw();\n";
@@ -423,6 +425,7 @@ namespace AdminPanel.Helpers.Tables
             //    code += "                    }\n";
             //}
             code += "        }).fnSetFilteringDelay(500);\n";
+            
             code += "    });\n";
             code += "</script>\n";
 
