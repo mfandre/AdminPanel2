@@ -142,7 +142,9 @@ namespace AdminPanel2.Controllers.JobManager.Behaviors.AgsService
                 {
                     foreach (var msg in dynamicObject.messages)
                     {
-                        messages.Add(new Tuple<string, string>(msg.type, msg.description));
+                        Tuple<string, string> temp = new Tuple<string, string>(msg.type, msg.description);
+                        if (!messages.Contains(temp))
+                            messages.Add(temp);
                     }
                 }
 

@@ -82,8 +82,13 @@ namespace UnitTest.JobManager
         [TestMethod]
         public void TestExecuteJobByJobManager()
         {
+            JobAgsService agsService = new JobAgsService(
+                    "http://ags101.portalinflor.com.br/arcgis/rest/services/Treinamento/Teste/GPServer/Script/submitJob?f=json",
+                    "http://ags101.portalinflor.com.br/arcgis/rest/services/Treinamento/Teste/GPServer/Script/jobs/{jobId}?f=json",
+                    "http://ags101.portalinflor.com.br/arcgis/rest/services/Treinamento/Teste/GPServer/Script/jobs/{jobId}/cancel");
+
             AdminPanel2.Controllers.JobManager.JobManager jm = new AdminPanel2.Controllers.JobManager.JobManager();
-            jm.ExecuteJob(1);
+            jm.ExecuteJob(agsService);
             Thread.Sleep(1000);
             Assert.AreNotEqual(JobStatus.none, jm.status);
             Thread.Sleep(1000);

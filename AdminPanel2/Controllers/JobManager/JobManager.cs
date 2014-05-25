@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 namespace AdminPanel2.Controllers.JobManager
 {
     /// <summary>
-    /// Classe reposnsabel por gerenciar UM Job
+    /// Classe reposnsabel por gerenciar UM Job.
+    /// <para>Ela também armazena as menssagens retornadas pelo JobWorker</para>
     /// </summary>
     public class JobManager
     {
@@ -18,25 +19,46 @@ namespace AdminPanel2.Controllers.JobManager
         /// De acordo com o ID passado monta o job e o executa
         /// </summary>
         /// <param name="id"></param>
-        public async Task ExecuteJob(int id)
+        public async Task ExecuteJob(Job job)
         {
-            //Todo: Pegar as informacoes do banco para montar o job e executa-lo...
-            var progress = new Progress<JobStatus>();
-            progress.ProgressChanged += (s, e) =>
+            try
             {
-                status = e;
-            };
+                var progress = new Progress<JobStatus>();
+                JobWorker jw = new JobWorker(job, progress);
 
-            await Task.Run(() =>
+                progress.ProgressChanged += (s, e) =>
+                {
+                    status = e;
+
+                    //armazena msg no banco
+                    if (status == JobStatus.cancelled)
+                    {
+                        List<Tuple<string,string>> msgs = jw.Messages;
+                    }
+                    else if (status == JobStatus.executionError) 
+                    {
+                        List<Tuple<string,string>> msgs = jw.Messages;
+                    }
+                    else if (status == JobStatus.failed) 
+                    {
+                        List<Tuple<string,string>> msgs = jw.Messages;
+                    }
+                    else if (status == JobStatus.succeeded)
+                    {
+                        List<Tuple<string, string>> msgs = jw.Messages;
+                    }
+                };
+
+                await Task.Run(() =>
+                {
+                    //Executando o job, perceba que este método é assincrono
+                    jw.DoWork();
+                });
+            }
+            catch
             {
-                JobAgsService agsService = new JobAgsService(
-                "http://ags101.portalinflor.com.br/arcgis/rest/services/Treinamento/Teste/GPServer/Script/submitJob?f=json",
-                "http://ags101.portalinflor.com.br/arcgis/rest/services/Treinamento/Teste/GPServer/Script/jobs/{jobId}?f=json",
-                "http://ags101.portalinflor.com.br/arcgis/rest/services/Treinamento/Teste/GPServer/Script/jobs/{jobId}/cancel");
-                JobWorker jw = new JobWorker(agsService,progress);
-                jw.DoWork();
-            });
+                throw;
+            }
         }
-
     }
 }
