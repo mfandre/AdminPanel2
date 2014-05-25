@@ -134,6 +134,14 @@
     <Compile Include="Controllers\ControleDeAmbientes\ClienteController.cs" />
     <Compile Include="Controllers\DataTableController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\JobManager\Behaviors\AgsService\BaseAgsServiceBehavior.cs" />
+    <Compile Include="Controllers\JobManager\Behaviors\JobBehavior.cs" />
+    <Compile Include="Controllers\JobManager\Exceptions\JobHttpException.cs" />
+    <Compile Include="Controllers\JobManager\Job.cs" />
+    <Compile Include="Controllers\JobManager\JobAgsService.cs" />
+    <Compile Include="Controllers\JobManager\JobManager.cs" />
+    <Compile Include="Controllers\JobManager\JobManagerController.cs" />
+    <Compile Include="Controllers\JobManager\JobWorker.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\Menu\MenuController.cs" />
     <Compile Include="Controllers\ServidoresSdeController.cs" />
